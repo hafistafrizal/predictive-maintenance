@@ -134,9 +134,9 @@ flowchart TD
     KNN_Manual --> RunKNN
     
     RunKNN --> Decision{Rasio Risiko %?}
-    Decision -->|Risiko < 40%| Normal[Status: NORMAL | Insight: Aman, Operasional Optimal]
-    Decision -->|40% <= Risiko < 75%| Warning[Status: WARNING | Insight: Waspada Anomali Suhu/Beban]
-    Decision -->|Risiko >= 75%| Malfungsi[Status: MALFUNGSI | Insight: Bahaya Kegagalan Sistem Absolut]
+    Decision -->|Risiko < 40%| Normal["Status: NORMAL | Insight: Aman, Operasional Optimal"]
+    Decision -->|40% <= Risiko < 75%| Warning["Status: WARNING | Insight: Waspada Anomali Suhu/Beban"]
+    Decision -->|Risiko >= 75%| Malfungsi["Status: MALFUNGSI | Insight: Bahaya Kegagalan Sistem Absolut"]
     
     Normal --> SaveDB[Simpan Log ke database MySQL: log_diagnosa]
     Warning --> SaveDB
