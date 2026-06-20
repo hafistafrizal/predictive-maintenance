@@ -1,0 +1,242 @@
+/* File: style.qss */
+
+/* Latar Belakang Utama & Font */
+QMainWindow, QWidget {
+    background-color: #0d0d11;
+    color: #e2e8f0; /* Semua teks default menjadi putih keabuan lembut */
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* Desain Tab Menu Premium */
+QTabWidget::pane {
+    border: 1px solid #1e1e28;
+    background-color: #121218;
+    border-radius: 8px;
+    margin-top: -1px;
+}
+
+QTabBar::tab {
+    background-color: #181822;
+    color: #94a3b8;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 1px solid #1e1e28;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin-right: 4px;
+}
+
+QTabBar::tab:selected {
+    background-color: #121218;
+    color: #ffffff;
+    border-top: 3px solid #3b82f6; /* Aksen Biru di tab aktif */
+    border-bottom: 1px solid #121218;
+}
+
+QTabBar::tab:hover {
+    background-color: #222230;
+    color: #ffffff;
+}
+
+/* Desain Kotak Kelompok (GroupBox / Cards) */
+QGroupBox {
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #1e1e28;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #121218;
+    padding-top: 15px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 8px;
+    color: #3b82f6; /* Teks judul grup warna biru */
+    font-weight: 800;
+}
+
+/* Input Teks & Dropdown */
+QLineEdit, QComboBox, QTextEdit {
+    padding: 8px 12px;
+    border: 1px solid #2d2d3d;
+    border-radius: 6px;
+    background-color: #181822;
+    color: #f1f5f9;
+}
+
+QLineEdit:focus, QComboBox:focus, QTextEdit:focus {
+    border: 1.5px solid #3b82f6;
+    background-color: #14141e;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #181822;
+    color: #f1f5f9;
+    border: 1px solid #2d2d3d;
+    selection-background-color: #3b82f6;
+    selection-color: #ffffff;
+}
+
+/* Label & Teks Dasar */
+QLabel {
+    color: #cbd5e1;
+    background: transparent;
+}
+
+/* Tombol Standar */
+QPushButton {
+    background-color: #1e1e28;
+    color: #f1f5f9;
+    border: 1px solid #2d2d3d;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #2b2b3a;
+}
+
+/* Tombol Khusus Form & Diagnosa */
+QPushButton#btn_batal, QPushButton#btn_refresh_hist {
+    background-color: #4b5563;
+    color: #ffffff;
+    border: none;
+}
+QPushButton#btn_batal:hover, QPushButton#btn_refresh_hist:hover {
+    background-color: #374151;
+}
+
+QPushButton#btn_hapus, QPushButton#btn_reset, QPushButton#btn_reset_hist {
+    background-color: #ef4444;
+    color: #ffffff;
+    border: none;
+}
+QPushButton#btn_hapus:hover, QPushButton#btn_reset:hover, QPushButton#btn_reset_hist:hover {
+    background-color: #dc2626;
+}
+
+QPushButton#btn_update {
+    background-color: #fbbf24;
+    color: #0f172a;
+    border: none;
+}
+QPushButton#btn_update:hover {
+    background-color: #f59e0b;
+}
+
+QPushButton#btn_simpan, QPushButton#btn_proses {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+}
+QPushButton#btn_simpan:hover, QPushButton#btn_proses:hover {
+    background-color: #2563eb;
+}
+
+QPushButton#btn_ekspor_hist {
+    background-color: #10b981;
+    color: #ffffff;
+    border: none;
+}
+QPushButton#btn_ekspor_hist:hover {
+    background-color: #059669;
+}
+
+/* Tabel Database & Riwayat */
+QTableWidget {
+    background-color: #121218;
+    alternate-background-color: #161620;
+    color: #f1f5f9;
+    border: 1px solid #1e1e28;
+    border-radius: 6px;
+    gridline-color: transparent;
+    selection-background-color: #1e293b;
+    selection-color: #3b82f6;
+}
+
+QTableWidget::item {
+    border-bottom: 1px solid #1e1e28;
+    padding: 8px;
+}
+
+QHeaderView::section {
+    background-color: #181822;
+    color: #a8b2d1;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 12px;
+    border: none;
+    border-bottom: 2px solid #3b82f6; /* Aksen bawah biru */
+}
+
+QTableCornerButton::section {
+    background-color: #181822;
+    border: none;
+}
+
+/* Scrollbars */
+QScrollBar:vertical {
+    background-color: #0d0d11;
+    width: 8px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #272738;
+    min-height: 20px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #3b82f6;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* Progress Bar (Risiko AI) */
+QProgressBar {
+    border: 1px solid #2d2d3d;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #181822;
+    color: #ffffff; /* Teks persen warna putih */
+    height: 24px;
+}
+
+QProgressBar::chunk {
+    background-color: #3b82f6;
+    border-radius: 5px;
+}
+
+/* Radio Button */
+QRadioButton {
+    color: #cbd5e1;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #475569;
+    background-color: #181822;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #3b82f6;
+    background-color: #3b82f6;
+}

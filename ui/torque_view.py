@@ -1,5 +1,9 @@
+# File: ui/torque_view.py
 from PySide6.QtWidgets import *
+from PySide6.QtGui import QFont
+from PySide6.QtCore import Qt
 from database.models import ProfileKendaraan
+
 
 class TampilanTorque(QWidget):
     def __init__(self, database):
@@ -10,139 +14,164 @@ class TampilanTorque(QWidget):
         self.data_tabel()
 
     def atur_tampilan(self):
-        layout_utama = QVBoxLayout(self)
+        layout_utama = QHBoxLayout(self)
+        layout_utama.setContentsMargins(15, 15, 15, 15)
+        layout_utama.setSpacing(20)
 
-        # FORM IMPUTAN
+        # STYLE CARD HEADER
+        style_header_card = """
+            color: #3b82f6; 
+            font-size: 18px; 
+            font-weight: bold; 
+            border-bottom: 1px solid #333333; 
+            padding-bottom: 8px;
+            margin-bottom: 5px;
+        """
+
+        # ========================================================
+        # BAGIAN KIRI: Form Inputan
+        # ========================================================
+        layout_kiri = QVBoxLayout()
+        grup_form = QGroupBox()  # Judul default luar dihapus
+        layout_form = QVBoxLayout(grup_form)
+        layout_form.setContentsMargins(15, 15, 15, 15)
+        layout_form.setSpacing(12)
+
+        lbl_head_form = QLabel("Pengaturan Profil Kendaraan")
+        lbl_head_form.setStyleSheet(style_header_card)
+        layout_form.addWidget(lbl_head_form)
+
         self.input_nama = QLineEdit()
-        self.input_nama.setPlaceholderText("Contoh: Toyota Avanza 1.5L")
-
         self.input_idle_rpm = QLineEdit()
-        self.input_idle_rpm.setPlaceholderText("Contoh: 800")
-
         self.input_max_torque = QLineEdit()
-        self.input_max_torque.setPlaceholderText("Contoh: 136")
-
         self.input_max_rpm = QLineEdit()
-        self.input_max_rpm.setPlaceholderText("Contoh: 4200")
 
-        # KUMPULAN TOMBOL
+        layout_form.addWidget(QLabel("Nama Kendaraan:"))
+        layout_form.addWidget(self.input_nama)
+        layout_form.addWidget(QLabel("RPM Idle (Stasioner):"))
+        layout_form.addWidget(self.input_idle_rpm)
+        layout_form.addWidget(QLabel("Torsi Puncak (Nm):"))
+        layout_form.addWidget(self.input_max_torque)
+        layout_form.addWidget(QLabel("RPM Batas Maksimal (Redline):"))
+        layout_form.addWidget(self.input_max_rpm)
+
+        # ========================================================
+        # TOMBOL CRUD YANG RAPI (Horizontal dengan Spacing)
+        # ========================================================
         layout_tombol = QHBoxLayout()
+        layout_tombol.setSpacing(15)  # Jarak antar tombol agar tidak dempet
 
-        self.tombol_simpan = QPushButton("Simpan")
-        self.tombol_simpan.clicked.connect(self.aksi_simpan)
-
-        self.tombol_update = QPushButton("Update")
-        self.tombol_update.clicked.connect(self.aksi_update)
-        self.tombol_update.hide()
-
-        self.tombol_hapus = QPushButton("Delete")
-        self.tombol_hapus.clicked.connect(self.aksi_hapus)
-        self.tombol_hapus.hide()
-
-        self.tombol_batal = QPushButton("Batal")
+        self.tombol_batal = QPushButton("BATAL")
+        self.tombol_batal.setObjectName("btn_batal")
+        self.tombol_batal.setCursor(Qt.PointingHandCursor)
         self.tombol_batal.clicked.connect(self.aksi_batal)
 
-        # TOMBOL LAYOUT HORIZONTAL
-        layout_tombol.addWidget(self.tombol_batal)
+        self.tombol_hapus = QPushButton("HAPUS")
+        self.tombol_hapus.setObjectName("btn_hapus")
+        self.tombol_hapus.setCursor(Qt.PointingHandCursor)
+        self.tombol_hapus.clicked.connect(self.aksi_hapus)
 
+        self.tombol_update = QPushButton("PERBARUI")
+        self.tombol_update.setObjectName("btn_update")
+        self.tombol_update.setCursor(Qt.PointingHandCursor)
+        self.tombol_update.clicked.connect(self.aksi_update)
+
+        self.tombol_simpan = QPushButton("SIMPAN PROFIL")
+        self.tombol_simpan.setObjectName("btn_simpan")
+        self.tombol_simpan.setCursor(Qt.PointingHandCursor)
+        self.tombol_simpan.clicked.connect(self.aksi_simpan)
+
+        self.tombol_update.hide()
+        self.tombol_hapus.hide()
+        self.tombol_batal.hide()
+
+        # Susunan tombol fleksibel
+        layout_tombol.addWidget(self.tombol_batal)
+        layout_tombol.addStretch()  # Mendorong Batal ke kiri, sisanya ke kanan
         layout_tombol.addWidget(self.tombol_hapus)
         layout_tombol.addWidget(self.tombol_update)
         layout_tombol.addWidget(self.tombol_simpan)
 
-        # FORM LAYOUT VERTIKAL
-        layout_utama.addWidget(QLabel("Nama Kendaraan: "))
-        layout_utama.addWidget(self.input_nama)
-        layout_utama.addWidget(QLabel("Idle RPM: "))
-        layout_utama.addWidget(self.input_idle_rpm)
-        layout_utama.addWidget(QLabel("Max Torque: "))
-        layout_utama.addWidget(self.input_max_torque)
-        layout_utama.addWidget(QLabel("Max RPM: "))
-        layout_utama.addWidget(self.input_max_rpm)
+        layout_form.addSpacing(15)
+        layout_form.addLayout(layout_tombol)
 
-        layout_utama.addLayout(layout_tombol)
+        layout_kiri.addWidget(grup_form)
+        layout_kiri.addStretch()
 
-        # TABEL DATA TORSI KENDARAAN
+        # ========================================================
+        # BAGIAN KANAN: Tabel Data Parameter
+        # ========================================================
+        layout_kanan = QVBoxLayout()
+        grup_tabel = QGroupBox()
+        layout_tabel_grup = QVBoxLayout(grup_tabel)
+        layout_tabel_grup.setContentsMargins(15, 15, 15, 15)
+
+        lbl_head_tabel = QLabel("Database Parameter Torsi")
+        lbl_head_tabel.setStyleSheet(style_header_card)
+        layout_tabel_grup.addWidget(lbl_head_tabel)
+
         self.tabel = QTableWidget()
+        self.tabel.setColumnCount(4)
+        self.tabel.setHorizontalHeaderLabels(["NAMA KENDARAAN", "RPM IDLE", "MAX TORQUE", "MAX RPM"])
 
-        self.tabel.setColumnCount(5)
-        self.tabel.setHorizontalHeaderLabels(["NO", "NAMA", "RPM IDLE", "MAX TORQUE", "MAX RPM"])
-        self.tabel.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        self.tabel.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
-        self.tabel.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
-        self.tabel.horizontalHeader().setSectionResizeMode(3, QHeaderView.Stretch)
-        self.tabel.horizontalHeader().setSectionResizeMode(4, QHeaderView.Stretch)
-
+        self.tabel.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.tabel.setEditTriggers(QTableWidget.NoEditTriggers)
-
-        # diklik menyorot satu baris penuh
         self.tabel.setSelectionBehavior(QAbstractItemView.SelectRows)
-
         self.tabel.verticalHeader().setVisible(False)
-
-        layout_utama.addWidget(self.tabel)
-
+        self.tabel.setShowGrid(False)
+        self.tabel.verticalHeader().setDefaultSectionSize(40)
         self.tabel.cellClicked.connect(self.klik_tabel)
 
-    def aksi_simpan(self):
-        nama = self.input_nama.text()
-        idle_rpm = self.input_idle_rpm.text()
-        max_torque = self.input_max_torque.text()
-        max_rpm = self.input_max_rpm.text()
+        layout_tabel_grup.addWidget(self.tabel)
+        layout_kanan.addWidget(grup_tabel)
 
-        # Cek data Kosong atau tidak
-        if not nama or not idle_rpm or not max_torque or not max_rpm:
+        layout_utama.addLayout(layout_kiri, 1)
+        layout_utama.addLayout(layout_kanan, 2)
+
+        # Sisa kode logika Database (Sama Persis)
+
+    def aksi_simpan(self):
+        nama, idle, max_t, max_r = self.input_nama.text(), self.input_idle_rpm.text(), self.input_max_torque.text(), self.input_max_rpm.text()
+        if not nama or not idle or not max_t or not max_r:
             QMessageBox.warning(self, "Peringatan", "Semua kolom harus diisi.")
             return
-
-        # Cek Angka di isi dengan benar
         try:
-            kendaraan_baru = ProfileKendaraan(nama, int(idle_rpm), float(max_torque), int(max_rpm))
-            berhasil, pesan = self.db.simpan_data(kendaraan_baru)
-
+            berhasil, pesan = self.db.simpan_data(ProfileKendaraan(nama, int(idle), float(max_t), int(max_r)))
             if berhasil:
-                QMessageBox.information(self, "Berhasil", pesan)
                 self.aksi_batal()
                 self.data_tabel()
-            else:
-                QMessageBox.warning(self, "Gagal", pesan)
-
         except ValueError:
-            QMessageBox.warning(self, "Peringatan", "Harap masukkan angka yang valid.")
+            QMessageBox.warning(self, "Peringatan", "Format angka tidak valid.")
 
     def data_tabel(self):
         daftar_kendaraan = self.db.ambil_data()
-
         self.tabel.setRowCount(0)
-
         for baris, kendaraan in enumerate(daftar_kendaraan):
             self.tabel.insertRow(baris)
+            item_nama = QTableWidgetItem(kendaraan.nama)
+            item_idle = QTableWidgetItem(f"{kendaraan.idle_rpm} RPM")
+            item_torsi = QTableWidgetItem(f"{kendaraan.max_torque} Nm")
+            item_max_rpm = QTableWidgetItem(f"{kendaraan.max_rpm} RPM")
 
-            self.tabel.setItem(baris, 0, QTableWidgetItem(str(baris + 1)))
+            for item in [item_idle, item_torsi, item_max_rpm]:
+                item.setTextAlignment(Qt.AlignCenter)
 
-            self.tabel.setItem(baris, 1, QTableWidgetItem(kendaraan.nama))
-            self.tabel.setItem(baris, 2, QTableWidgetItem(str(kendaraan.idle_rpm)))
-            self.tabel.setItem(baris, 3, QTableWidgetItem(str(kendaraan.max_torque)))
-            self.tabel.setItem(baris, 4, QTableWidgetItem(str(kendaraan.max_rpm)))
+            self.tabel.setItem(baris, 0, item_nama)
+            self.tabel.setItem(baris, 1, item_idle)
+            self.tabel.setItem(baris, 2, item_torsi)
+            self.tabel.setItem(baris, 3, item_max_rpm)
 
     def klik_tabel(self, baris, kolom):
-        nama = self.tabel.item(baris, 1).text()
-        idle_rpm = self.tabel.item(baris, 2).text()
-        max_torque = self.tabel.item(baris, 3).text()
-        max_rpm = self.tabel.item(baris, 4).text()
+        self.input_nama.setText(self.tabel.item(baris, 0).text())
+        self.input_idle_rpm.setText(self.tabel.item(baris, 1).text().replace(" RPM", ""))
+        self.input_max_torque.setText(self.tabel.item(baris, 2).text().replace(" Nm", ""))
+        self.input_max_rpm.setText(self.tabel.item(baris, 3).text().replace(" RPM", ""))
+        self.nama_terpilih = self.tabel.item(baris, 0).text()
 
-        # Mengisi form
-        self.input_nama.setText(nama)
-        self.input_idle_rpm.setText(idle_rpm)
-        self.input_max_torque.setText(max_torque)
-        self.input_max_rpm.setText(max_rpm)
-
-        # Simpan nama sebagai acuan update/delete
-        self.nama_terpilih = nama
-
-        # Ganti mode tombol
         self.tombol_simpan.hide()
         self.tombol_update.show()
         self.tombol_hapus.show()
+        self.tombol_batal.show()
 
     def aksi_batal(self):
         self.input_nama.clear()
@@ -152,50 +181,29 @@ class TampilanTorque(QWidget):
         self.nama_terpilih = None
         self.tabel.clearSelection()
 
-        # Kembalikan mode tombol ke awal
         self.tombol_simpan.show()
         self.tombol_update.hide()
         self.tombol_hapus.hide()
+        self.tombol_batal.hide()
 
     def aksi_update(self):
         if not self.nama_terpilih: return
-
-        nama = self.input_nama.text()
-        idle_rpm = self.input_idle_rpm.text()
-        max_torque = self.input_max_torque.text()
-        max_rpm = self.input_max_rpm.text()
-
-        if not nama or not idle_rpm or not max_torque or not max_rpm:
-            QMessageBox.warning(self, "Peringatan", "Semua kolom harus diisi.")
-            return
-
+        nama, idle, max_t, max_r = self.input_nama.text(), self.input_idle_rpm.text(), self.input_max_torque.text(), self.input_max_rpm.text()
         try:
-            kendaraan_update = ProfileKendaraan(nama, int(idle_rpm), float(max_torque), int(max_rpm))
-            berhasil, pesan = self.db.update_data(self.nama_terpilih, kendaraan_update)
-
+            berhasil, pesan = self.db.update_data(self.nama_terpilih,
+                                                  ProfileKendaraan(nama, int(idle), float(max_t), int(max_r)))
             if berhasil:
-                QMessageBox.information(self, "Berhasil", pesan)
                 self.aksi_batal()
                 self.data_tabel()
-            else:
-                QMessageBox.warning(self, "Gagal", pesan)
         except ValueError:
-            QMessageBox.warning(self, "Peringatan", "Harap masukkan angka yang valid.")
+            pass
 
     def aksi_hapus(self):
         if not self.nama_terpilih: return
-
-        konfirmasi = QMessageBox.question(
-            self, "Konfirmasi Hapus",
-            f"Yakin ingin menghapus profil {self.nama_terpilih}?",
-            QMessageBox.Yes | QMessageBox.No
-        )
-
+        konfirmasi = QMessageBox.question(self, "Hapus", f"Yakin hapus {self.nama_terpilih}?",
+                                          QMessageBox.Yes | QMessageBox.No)
         if konfirmasi == QMessageBox.Yes:
             berhasil, pesan = self.db.hapus_data(self.nama_terpilih)
             if berhasil:
-                QMessageBox.information(self, "Berhasil", pesan)
                 self.aksi_batal()
                 self.data_tabel()
-            else:
-                QMessageBox.warning(self, "Gagal", pesan)

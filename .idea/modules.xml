@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/predict-maintenence.iml" filepath="$PROJECT_DIR$/.idea/predict-maintenence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/predictive-maintenance.iml" filepath="$PROJECT_DIR$/.idea/predictive-maintenance.iml" />
     </modules>
   </component>
 </project>
