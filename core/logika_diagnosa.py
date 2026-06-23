@@ -1,4 +1,8 @@
 # File: core/logika_diagnosa.py
+# Deskripsi: Kelas ini mengatur seluruh alur logika diagnosa mulai dari validasi telemetri,
+#            perhitungan estimasi torsi kendaraan, pemetaan ke skala dataset AI,
+#            hingga eksekusi prediksi model Machine Learning.
+
 from core.kalkulator_torsi import KalkulatorTorsi
 
 
@@ -73,13 +77,8 @@ class LogikaDiagnosa:
         risiko = 0.0
 
         if data_matang is not None:
-            try:
-                # Menarik persentase kepastian (Probabilitas) asli dari model KNN
-                probabilitas = ai_terpilih.model.predict_proba(data_matang)[0]
-                risiko = probabilitas[1] * 100.0
-            except AttributeError:
-                hasil_mentah = ai_terpilih.prediksi(data_matang)
-                risiko = 85.0 if hasil_mentah == "MALFUNGSI" else 10.0
+            # Menggunakan method hitung_risiko yang terenkapsulasi di dalam kelas model
+            risiko = ai_terpilih.hitung_risiko(data_matang)
 
         # =====================================================================
         # 5. PEMBENTUKAN KEPUTUSAN & INSIGHT BERDASARKAN HASIL ML
@@ -103,7 +102,14 @@ class LogikaDiagnosa:
             insight.append(
                 "🚨 MALFUNGSI TERDETEKSI: Model AI menemukan pola telemetri yang identik dengan kegagalan mesin absolut (Power/Heat Failure) pada dataset.")
 
-        data_ai_teks = f"Skala Konversi Dataset ML -> RPM: {rpm_ai:.0f} | Torsi: {torsi_ai:.1f} Nm | Suhu M: {suhu_m_ai:.1f} K | Suhu U: {suhu_u_ai:.1f} K"
+        # Format data konversi transparan AI agar tersusun rapi secara vertikal (multi-line)
+        data_ai_teks = (
+            "Data Transparan AI (Hasil Pemetaan Dataset ML):\n"
+            f"  • RPM AI: {rpm_ai:.0f} RPM\n"
+            f"  • Torsi AI: {torsi_ai:.1f} Nm\n"
+            f"  • Suhu Mesin AI: {suhu_m_ai:.1f} K\n"
+            f"  • Suhu Udara AI: {suhu_u_ai:.1f} K"
+        )
 
         return self._format_hasil(status_teks, warna, risiko, torsi_asli, "\n".join(insight), data_ai_teks,
                                   beban_persen)

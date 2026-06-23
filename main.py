@@ -1,4 +1,7 @@
 # File: main.py
+# Deskripsi: Titik masuk utama aplikasi (main entry point) yang menginisialisasi GUI QMainWindow,
+#            koneksi basis data, tab-tab navigasi, serta pemuatan tema visual QSS.
+
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QTabWidget, QStyle
 
@@ -11,7 +14,7 @@ from ui.torque_view import TampilanTorque
 class JendelaUtama(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Predictive Maintenance AI")
+        self.setWindowTitle("Predictive Maintenance ML")
         self.resize(1000, 750)
 
         self.db = DatabaseKendaraan()

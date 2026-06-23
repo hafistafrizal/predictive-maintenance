@@ -1,19 +1,21 @@
 # File: core/mesin_ai_manual.py
+# Deskripsi: Mengimplementasikan model AI manual yang dilatih secara langsung (Live Training) dari berkas dataset CSV
+#            menggunakan algoritma KNN dan penyeimbangan data SMOTE.
+
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import MinMaxScaler
 from imblearn.over_sampling import SMOTE # Tambahan untuk mencerdaskan AI Manual
 import warnings
+from core.mesin_ai_base import MesinDiagnosaBase
 
 # Mengabaikan pesan peringatan (warning) dari terminal
 warnings.filterwarnings('ignore')
 
-class MesinDiagnosaManual:
+class MesinDiagnosaManual(MesinDiagnosaBase):
     def __init__(self):
-        # Menyediakan tempat untuk model dan alat penyesuai skala
-        self.model = None
-        self.scaler = None
-
+        # Memanggil konstruktor base class
+        super().__init__()
         # Langsung melatih model saat kelas ini dipanggil
         self.muat_dan_latih_dari_csv()
 
@@ -49,31 +51,3 @@ class MesinDiagnosaManual:
             print("[ERROR] File '2020 Predictive Maintenance Dataset.csv' tidak ditemukan di folder!")
         except Exception as e:
             print(f"[ERROR] Terjadi kesalahan saat melatih AI Manual: {e}")
-
-    def siapkan_data(self, rpm, suhu_m, suhu_u, torsi):
-        """Membungkus data inputan mekanik agar formatnya dikenali AI"""
-        if self.scaler is None:
-            return None
-
-        nama_kolom = [
-            'Rotational speed [rpm]',
-            'Process temperature [K]',
-            'Air temperature [K]',
-            'Torque [Nm]'
-        ]
-
-        df_input = pd.DataFrame([[rpm, suhu_m, suhu_u, torsi]], columns=nama_kolom)
-        data_scaled = self.scaler.transform(df_input)
-        return data_scaled
-
-    def prediksi(self, data_matang):
-        """Fungsi fallback (cadangan) untuk menghasilkan tebakan akhir"""
-        if self.model is None or data_matang is None:
-            return "ERROR"
-
-        hasil = self.model.predict(data_matang)
-
-        if hasil[0] == 1:
-            return "MALFUNGSI"
-        else:
-            return "NORMAL"

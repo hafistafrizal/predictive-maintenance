@@ -5,25 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f54e4d2-7dbf-4511-b10c-b59ddb45872b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/predictive-maintenance.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/logika_diagnosa.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/latih_ulang.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style.qss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/diagnostics_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/history_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/predict-maintenence.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/kalkulator_torsi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/kalkulator_torsi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/logika_diagnosa.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/logika_diagnosa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/mesin_ai_manual.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/mesin_ai_manual.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/mesin_ai_pickle.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/mesin_ai_pickle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/db_koneksi.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_koneksi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latih_ulang.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_terbaik.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scaler.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_kalkulator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing_data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/diagnostics_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/diagnostics_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/history_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/history_view.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/torque_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/torque_view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="28" />
+    <option name="cachedIndexableFilesCount" value="30" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -135,6 +129,8 @@
       <workItem from="1781751318318" duration="6514000" />
       <workItem from="1781795670203" duration="3173000" />
       <workItem from="1781958983252" duration="3221000" />
+      <workItem from="1782184827284" duration="1238000" />
+      <workItem from="1782188014658" duration="1144000" />
     </task>
     <servers />
   </component>
@@ -143,6 +139,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/predictive_maintenance$kalkulator_torsi.coverage" NAME="kalkulator_torsi Coverage Results" MODIFIED="1781592395258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
-    <SUITE FILE_PATH="coverage/predictive_maintenance$main.coverage" NAME="main Coverage Results" MODIFIED="1781965062832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/predictive_maintenance$main.coverage" NAME="main Coverage Results" MODIFIED="1782188430663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

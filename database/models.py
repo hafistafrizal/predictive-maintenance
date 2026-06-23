@@ -1,3 +1,6 @@
+# File: database/models.py
+# Deskripsi: Representasi kelas model data untuk profil spesifikasi kendaraan (ProfileKendaraan).
+
 class ProfileKendaraan:
     def __init__(self, nama, idle_rpm, max_torque, max_rpm, id=None):
         self.id = id

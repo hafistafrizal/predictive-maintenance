@@ -1,3 +1,7 @@
+# File: database/db_koneksi.py
+# Deskripsi: Mengatur koneksi ke MySQL, inisialisasi tabel torsi dan log diagnosa,
+#            serta menyediakan fungsi CRUD data kendaraan dan pencatatan log diagnosa.
+
 import mysql.connector
 from datetime import datetime
 from database.models import ProfileKendaraan

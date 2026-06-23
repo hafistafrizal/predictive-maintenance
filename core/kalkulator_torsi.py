@@ -1,3 +1,6 @@
+# File: core/kalkulator_torsi.py
+# Deskripsi: Mengestimasi torsi mesin kendaraan menggunakan interpolasi linear antara RPM idle dan RPM puncak.
+
 class KalkulatorTorsi:
     def __init__(self):
         self.rasio_torsi_idle = 0.15
