@@ -1,0 +1,61 @@
+# ============================================================
+# .gitignore — Predictive Maintenance ML Project
+# File ini memberitahu Git folder/file apa yang TIDAK perlu
+# di-push ke GitHub.
+# ============================================================
+
+# --------------------------------------------------
+# Python: Cache & Bytecode (dibuat otomatis saat run)
+# --------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyc
+
+# --------------------------------------------------
+# Virtual Environment (ukurannya bisa ratusan MB)
+# --------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# --------------------------------------------------
+# File Model Machine Learning (ukuran besar, opsional)
+# Hapus 2 baris di bawah jika ingin model ikut di-push
+# --------------------------------------------------
+# model_terbaik.pkl
+# scaler.pkl
+
+# --------------------------------------------------
+# Dataset CSV (ukuran besar, biasanya tidak di-push)
+# Hapus baris di bawah jika ingin dataset ikut di-push
+# --------------------------------------------------
+# 2020 Predictive Maintenance Dataset.csv
+
+# --------------------------------------------------
+# IDE & Editor
+# --------------------------------------------------
+.idea/
+.vscode/
+*.iml
+
+# --------------------------------------------------
+# OS Generated Files
+# --------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --------------------------------------------------
+# Log & Temporary Files
+# --------------------------------------------------
+*.log
+*.tmp
+*.bak
+
+# --------------------------------------------------
+# Laporan & Output Sementara
+# --------------------------------------------------
+Laporan_*.csv
