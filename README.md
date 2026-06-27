@@ -1,6 +1,18 @@
-# Sistem Predictive Maintenance AI — Diagnosa & Manajemen Kendaraan
+<div align="center">
 
-Aplikasi desktop berbasis **GUI (PySide6)** dan **Machine Learning (K-Nearest Neighbors)** untuk melakukan diagnosa pemeliharaan prediktif pada mesin kendaraan secara real-time. Sistem ini mengintegrasikan perhitungan torsi via interpolasi linear, pemetaan domain adaptasi dari konteks kendaraan ke dataset industri CNC, serta prediksi risiko kegagalan mesin melalui model KNN + SMOTE.
+# 🔧 Predictive Maintenance AI
+### Diagnosa & Manajemen Kendaraan Berbasis Machine Learning
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![PySide6](https://img.shields.io/badge/PySide6-6.x-41CD52?style=for-the-badge&logo=qt&logoColor=white)](https://doc.qt.io/qtforpython/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.0%2B-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![Release](https://img.shields.io/badge/Release-v1.1.0-brightgreen?style=for-the-badge)](CHANGELOG.md)
+
+> Aplikasi desktop berbasis **GUI (PySide6)** dan **Machine Learning (K-Nearest Neighbors)** untuk melakukan diagnosa pemeliharaan prediktif pada mesin kendaraan secara real-time. Sistem mengintegrasikan perhitungan torsi via interpolasi linear, domain adaptation dari konteks kendaraan ke dataset industri CNC, serta prediksi risiko kegagalan mesin melalui model **KNN + SMOTE**.
+
+</div>
 
 ---
 
@@ -612,3 +624,69 @@ Dataset menggunakan data mesin industri CNC, bukan kendaraan. Sistem memetakan b
 | `[ERROR] File CSV tidak ditemukan` | Pastikan `2020 Predictive Maintenance Dataset.csv` ada di root proyek (diperlukan mode AI Manual) |
 | Aplikasi crash saat startup | Pastikan semua dependensi sudah terinstal dengan benar di virtual environment aktif |
 | Tabel kosong di tab Diagnosa | Tambahkan minimal 1 data kendaraan di **Tab Database Torsi** terlebih dahulu |
+
+---
+
+## 🤝 10. Kontribusi
+
+Kontribusi sangat disambut! Silakan ikuti langkah-langkah berikut:
+
+1. **Fork** repositori ini
+2. Buat **branch baru** untuk fitur/perbaikan Anda:
+   ```bash
+   git checkout -b fitur/nama-fitur-baru
+   ```
+3. **Commit** perubahan Anda dengan pesan yang jelas:
+   ```bash
+   git commit -m "feat: tambahkan fitur X untuk Y"
+   ```
+4. **Push** ke branch Anda:
+   ```bash
+   git push origin fitur/nama-fitur-baru
+   ```
+5. Buat **Pull Request** ke branch `main`
+
+> Silakan baca [CHANGELOG.md](CHANGELOG.md) untuk melihat riwayat perubahan dan [SECURITY.md](SECURITY.md) untuk panduan pelaporan kerentanan keamanan.
+
+### Konvensi Commit Message
+
+| Prefix | Digunakan Untuk |
+|---|---|
+| `feat:` | Menambahkan fitur baru |
+| `fix:` | Memperbaiki bug |
+| `docs:` | Perubahan dokumentasi |
+| `refactor:` | Refaktor kode (tanpa perubahan fungsional) |
+| `perf:` | Peningkatan performa |
+| `chore:` | Tugas pemeliharaan (update dependensi, dll.) |
+
+---
+
+## 📄 11. Lisensi
+
+Proyek ini dilisensikan di bawah **MIT License** — lihat file [LICENSE](LICENSE) untuk detail lengkap.
+
+```
+MIT License © 2026 hafistafrizal
+```
+
+---
+
+## 🙏 12. Acknowledgements
+
+- **Dataset:** [AI4I 2020 Predictive Maintenance Dataset](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset) — UCI Machine Learning Repository
+- **Framework GUI:** [PySide6](https://doc.qt.io/qtforpython/) (Qt for Python)
+- **Machine Learning:** [scikit-learn](https://scikit-learn.org/) & [imbalanced-learn](https://imbalanced-learn.org/)
+- **Inspirasi:** Teknik domain adaptation untuk menghubungkan data industri CNC ke konteks kendaraan otomotif
+
+---
+
+<div align="center">
+
+Dibuat dengan ❤️ oleh **[hafistafrizal](https://github.com/hafistafrizal)**
+
+⭐ **Jika proyek ini bermanfaat, berikan bintang!** ⭐
+
+[![GitHub Stars](https://img.shields.io/github/stars/hafistafrizal/predictive-maintenance?style=social)](https://github.com/hafistafrizal/predictive-maintenance/stargazers)
+
+</div>
+

@@ -1,0 +1,21 @@
+# ============================================================
+# Predictive Maintenance AI - Requirements
+# Python: 3.8 - 3.12+
+# ============================================================
+
+# GUI Framework
+PySide6>=6.4.0
+
+# Database Connector
+mysql-connector-python>=8.0.0
+
+# Data Processing
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Machine Learning
+scikit-learn>=1.0.0
+imbalanced-learn>=0.10.0
+
+# Serialization (pre-installed with Python)
+# pickle (built-in)
